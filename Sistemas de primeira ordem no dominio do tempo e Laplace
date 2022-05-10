@@ -1,0 +1,39 @@
+//Antônio Monteiro da Silva Neto
+//Instrumentação eletronica
+//Eng. de Controle e Automação - 10/05/2022
+//SIStemas de primeira ordem no dominio do tempo e Laplace
+
+clc
+clear
+
+K = 1;
+tal = 0.1;
+
+num = K;
+den = tal*%s+1;
+
+H = syslin('c', num/den);
+
+t = 0:0.001:1;
+G = csim('step', t,H);
+
+time = [];
+y = [];
+k=1;
+
+subplot(121)
+plot2d(t, G)
+title("LaPlace")
+xgrid
+
+for t2 = 0:0.001:1;
+   y = K*(1-exp(-t2/tal));
+   yOut(k)= y; 
+   time(k)= t2 ;
+   k=k+1;
+end
+
+subplot(122)
+plot2d(time, yOut)
+title("TEMPO")
+xgrid
