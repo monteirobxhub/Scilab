@@ -1,0 +1,59 @@
+//Antônio Monteiro da Silva Neto
+//Instrumentação eletronica
+//Eng. de Controle e Automação - 10/05/2022
+//SIStemas de segunda ordem no dominio do tempo
+
+y= [];
+time = [];
+zetta=0.3;
+wn=10;
+k=1;
+
+for t = 0:0.001:10
+    y = 1-(exp(-zetta*wn*t)/sqrt(1-zetta^2))*sin(wn*sqrt(1-zetta^2)*t + atan(sqrt(1-zetta^2)/zetta));
+    yOut(k)= y; 
+    time(k)= t;
+    k=k+1;
+end
+
+subplot(221)
+plot2d(time, yOut)
+title("Zetta =0.3")
+xgrid
+
+
+y2= [];
+time2 = [];
+zetta2=0.7;
+wn2=10;
+k2=1;
+
+for t2 = 0:0.001:10
+    y2 = 1-(exp(-zetta2*wn2*t2)/sqrt(1-zetta2^2))*sin(wn2*sqrt(1-zetta2^2)*t2 + atan(sqrt(1-zetta2^2)/zetta2));
+    yOut2(k2)= y2; 
+    time2(k2)= t2;
+    k2=k2+1;
+end
+
+subplot(222)
+plot2d(time2, yOut2)
+title("Zetta =0.7")
+xgrid
+
+y3= [];
+time3 = [];
+zetta3=1.2;
+wn3=10;
+k3=1;
+
+for t3 = 0:0.001:10
+    y3 = 1-(exp(-zetta3*wn3*t3)/sqrt(1-zetta3^2))*sin(wn3*sqrt(1-zetta3^2)*t3 + atan(sqrt(1-zetta3^2)/zetta3));
+    yOut3(k3)= y3; 
+    time3(k3)= t3;
+    k3=k3+1;
+end
+
+subplot(223)
+plot2d(time3, yOut3)
+title("Zetta =1.2")
+xgrid
