@@ -1,0 +1,27 @@
+clc
+clear
+
+delta = 0.001
+f = 10
+w = 2*%pi*f
+k = 1
+
+vOut = []
+tOut = []
+dvDtOut = []
+vAnterior = 0
+
+for t= 0:delta:1
+    v = sin(w*t)
+    
+    dvDt = (v - vAnterior)/delta
+    vAnterior = v
+    
+    vOut(k) = v
+    tOut(k) = t
+    dvDtOut(k) = dvDt/w
+    k = k+1
+end
+
+plot(tOut, vOut)
+plot(tOut, dvDtOut, 'r')
