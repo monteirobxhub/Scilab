@@ -1,0 +1,20 @@
+//Antônio Monteiro Da Silva Neto
+//Sistemas Embarcados
+//Fazer um Led Conectado a um RD0 piscar em um intervalo de tempo
+
+//RDO-> LED
+
+void main() {
+
+     //LED
+     TRISD = 0;
+     PORTD = 0;
+     
+     while(1)
+     {
+     PORTD.RD0 = 1;
+     Delay_ms(400);
+     PORTD.RD0 = 0;
+     Delay_ms(400);
+     }
+}
